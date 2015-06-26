@@ -31,7 +31,7 @@
 Program
     : SourceElements {
         $$ = $1;
-        console.log($$);
+        return $$;
     }
     ;
 
@@ -99,7 +99,7 @@ AssignmentExpr
 
 AssignmentOperator
     : '=' {
-        $$ = $1;
+        $$ = new yy.Operator($1);
     }
     ;
 

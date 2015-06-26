@@ -86,7 +86,7 @@ switch (yystate) {
 case 1:
 
         this.$ = $$[$0];
-        console.log(this.$);
+        return this.$;
     
 break;
 case 2:
@@ -100,7 +100,7 @@ case 3:
         this.$ = $$[$0-1];
     
 break;
-case 4: case 5: case 10: case 11: case 13: case 15: case 16: case 23: case 24: case 25: case 26: case 30: case 33: case 36: case 39: case 42: case 43:
+case 4: case 5: case 10: case 11: case 13: case 15: case 23: case 24: case 25: case 26: case 30: case 33: case 36: case 39: case 42: case 43:
 
         this.$ = $$[$0];
     
@@ -113,6 +113,11 @@ break;
 case 12: case 14:
 
         this.$ = new yy.AssignmentExpr($$[$0-1], $$[$0-2], $$[$0]);
+    
+break;
+case 16:
+
+        this.$ = new yy.Operator($$[$0]);
     
 break;
 case 17: case 18:
