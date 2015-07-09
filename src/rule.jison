@@ -165,10 +165,10 @@ AddictiveExprNoBF
         $$ = $1;
     }
     | AddictiveExprNoBF '+' MultiplicativeExprNoBF {
-        $$ = new yy.AddictiveExpr($2, $1, $3);
+        $$ = new yy.AddictiveExpr(new yy.Operator('add'), $1, $3);
     }
     | AddictiveExprNoBF '-' MultiplicativeExprNoBF {
-        $$ = new yy.AddictiveExpr($2, $1, $3);
+        $$ = new yy.AddictiveExpr(new yy.Operator('sub'), $1, $3);
     }
     ;
 
@@ -177,10 +177,10 @@ AddictiveExpr
         $$ = $1;
     }
     | AddictiveExpr '+' MultiplicativeExpr {
-        $$ = new yy.AddictiveExpr($2, $1, $3);
+        $$ = new yy.AddictiveExpr(new yy.Operator('add'), $1, $3);
     }
     | AddictiveExpr '-' MultiplicativeExpr {
-        $$ = new yy.AddictiveExpr($2, $1, $3);
+        $$ = new yy.AddictiveExpr(new yy.Operator('sub'), $1, $3);
     }
     ;
 
@@ -189,10 +189,10 @@ MultiplicativeExprNoBF
         $$ = $1;
     }
     | MultiplicativeExprNoBF '*' UnaryExprNoBF {
-        $$ = new yy.MultiplicativeExpr($2, $1, $3);
+        $$ = new yy.MultiplicativeExpr(new yy.Operator('mul'), $1, $3);
     }
     | MultiplicativeExprNoBF '/' UnaryExprNoBF {
-        $$ = new yy.MultiplicativeExpr($2, $1, $3);
+        $$ = new yy.MultiplicativeExpr(new yy.Operator('div'), $1, $3);
     }
     ;
 
@@ -201,10 +201,10 @@ MultiplicativeExpr
         $$ = $1;
     }
     | MultiplicativeExpr '*' UnaryExpr {
-        $$ = new yy.MultiplicativeExpr($2, $1, $3);
+        $$ = new yy.MultiplicativeExpr(new yy.Operator('mul'), $1, $3);
     }
     | MultiplicativeExpr '/' UnaryExpr {
-        $$ = new yy.MultiplicativeExpr($2, $1, $3);
+        $$ = new yy.MultiplicativeExpr(new yy.Operator('div'), $1, $3);
     }
     ;
 

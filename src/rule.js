@@ -150,14 +150,24 @@ case 28:
         this.$ = new yy.Num($$[$0]);
     
 break;
-case 31: case 32: case 34: case 35:
+case 31: case 34:
 
-        this.$ = new yy.AddictiveExpr($$[$0-1], $$[$0-2], $$[$0]);
+        this.$ = new yy.AddictiveExpr(new yy.Operator('add'), $$[$0-2], $$[$0]);
     
 break;
-case 37: case 38: case 40: case 41:
+case 32: case 35:
 
-        this.$ = new yy.MultiplicativeExpr($$[$0-1], $$[$0-2], $$[$0]);
+        this.$ = new yy.AddictiveExpr(new yy.Operator('sub'), $$[$0-2], $$[$0]);
+    
+break;
+case 37: case 40:
+
+        this.$ = new yy.MultiplicativeExpr(new yy.Operator('mul'), $$[$0-2], $$[$0]);
+    
+break;
+case 38: case 41:
+
+        this.$ = new yy.MultiplicativeExpr(new yy.Operator('div'), $$[$0-2], $$[$0]);
     
 break;
 }
