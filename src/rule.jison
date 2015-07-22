@@ -5,6 +5,7 @@
 %%
 
 [0-9]+("."[0-9]+)?\b  return 'NUMBER'
+\"[^"\n]*["\n]|\'[^'\n]*['\n]  return 'STRING'
 [a-zA-Z_$][a-zA-Z_0-9$]*  return 'IDENT'
 
 "="  return  '='
@@ -154,6 +155,9 @@ PrimaryExprNoBrace
     }
     | NUMBER {
         $$ = new yy.Num($1);
+    }
+    | STRING {
+        $$ = new yy.String($1);
     }
     | '(' Expr ')' {
         $$ = $2;
