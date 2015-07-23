@@ -105,6 +105,11 @@ case 4: case 5: case 10: case 11: case 13: case 15: case 23: case 24: case 25: c
         this.$ = $$[$0];
     
 break;
+case 6: case 7:
+
+        this.$ = new yy.EmptyStatement($$[$0]); 
+    
+break;
 case 8: case 9: case 20: case 30:
 
         this.$ = $$[$0-1];

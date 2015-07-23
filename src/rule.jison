@@ -56,8 +56,12 @@ Statement
     ;
 
 EmptyStatement
-    : ';'
-    | NEWLINE
+    : ';' {
+        $$ = new yy.EmptyStatement($1); 
+    }
+    | NEWLINE {
+        $$ = new yy.EmptyStatement($1); 
+    }
     ;
 ExprStatement
     : ExprNoBF ';' {
