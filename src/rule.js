@@ -705,4 +705,4 @@ exports.main = function commonjsMain(args) {
 if (typeof module !== 'undefined' && require.main === module) {
   exports.main(process.argv.slice(1));
 }
-}module.exports = parser
+};module.exports = parser;

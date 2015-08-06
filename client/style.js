@@ -23,7 +23,9 @@ let clone = function(v) {
 
 //build-in style support
 [
-    'background', 'color', 'fontSize', 'fontWeight', 'backgroundColor',
+    'background', 'color', 'backgroundColor',
+    'fontSize', 'fontWeight', 'fontFamily', 'lineHeight',
+    'cursor',
     'textAlign',
     'display',
     'float',

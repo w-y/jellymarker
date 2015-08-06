@@ -1,15 +1,21 @@
 {
   "name": "jellymarker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "jellymarker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "BSD-2-Clause",
+  "author": "w-y",
+  "license": "MIT",
+  "dependencies": {
+    
+  },
   "devDependencies": {
     "babelify": "^6.1.1",
-    "browserify": "^10.2.1"
+    "browserify": "^10.2.1",
+    "jison": "~0.4.13",
+    "ebnf-parser": "0.1.10",
+    "lex-parser" : "0.1.4"
   }
 }
