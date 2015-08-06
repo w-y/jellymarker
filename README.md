@@ -45,7 +45,7 @@ Finally you get C:
     node ./bin/build.js  // ./dist/jellymarker.js
 
 
-## variables
+## Variables
 
 Define a named data structure:
 
@@ -75,7 +75,7 @@ But in the system of css styles it could be meaningfule:
     
     height(100) + width(100) + block
 
-## operators
+## Operators
 
 Jellymarker now supports binary operators: +, -, * and /.
 
