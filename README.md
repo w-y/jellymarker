@@ -8,7 +8,7 @@ A simple demo:
 
 First you defined variable A and B:
     
-    var Jellymarker  = require('Jellymarker');
+    var Jellymarker  = require('jellymarker');
 
     var jellymarker = Jellymarker.create();
     
