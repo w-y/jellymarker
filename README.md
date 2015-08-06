@@ -1,5 +1,4 @@
 # Jellymarker.js
----
 
 Jellymarker.js defines a set of simple rules for expressions (i.e, +, -, *, /, (), call).
 
@@ -9,6 +8,8 @@ A simple demo:
 
 First you defined variable A and B:
     
+    var Jellymarker  = require('Jellymarker');
+
     var jellymarker = Jellymarker.create();
     
     jellymarker.registerVariables('A', {v:'Hi'})
@@ -85,4 +86,4 @@ Jellymarker now supports binary operators: +, -, * and /.
 
 Then you can use operator '+' in the script.
 
-and *,/ 's priority is higher than +,-.
+and '*' and '/' 's priority is higher than '+' and '-'.
