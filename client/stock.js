@@ -1,5 +1,4 @@
-import source from './test.js';
-import Jellymarker from './jellymarker';
+import Jellymarker from '../dist/jellymarker';
 
 var jellymarker = Jellymarker.create();
 var jellymarker2 = Jellymarker.create();
@@ -185,15 +184,12 @@ jellymarker.registerOperators('/', function(operand1, operand2) {
 });
 
 
-jellymarker.registerVariables('MA', function(v) {
+jellymarker.registerVariables('AVG', function(v) {
     return this.operators['/'](v, 2);
 });
 
 jellymarker.registerVariables('OPEN', v1);
 
 jellymarker.registerVariables('CLOSE', v2);
-
-jellymarker.compile(source, {}, jellymarker);
-
 
 jellymarker2.compile('A=100;', {});

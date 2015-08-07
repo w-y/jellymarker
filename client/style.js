@@ -1,4 +1,4 @@
-import Jellymarker from './jellymarker';
+import Jellymarker from '../dist/jellymarker';
 
 let jellymarker = Jellymarker.create();
 

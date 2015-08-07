@@ -1,8 +1,9 @@
 {
   "name": "jellymarker",
-  "version": "0.6.1",
+  "version": "0.7.1",
+  "repositry": "https://github.com/w-y/jellymarker",
   "description": "",
-  "main": "jellymarker.js",
+  "main": "/lib/jellymarker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
