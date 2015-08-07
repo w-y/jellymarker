@@ -1,98 +1,94 @@
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-var AST = {
-    Program: function Program(statements) {
+let AST = {
+    Program: function(statements) {
         this.type = 'Program';
         this.statements = statements;
     },
-    Statement: function Statement(content) {
+    Statement: function(content) {
         this.type = 'Statement';
         this.content = content;
     },
-    EmptyStatement: function EmptyStatement() {
+    EmptyStatement: function() {
         this.type = 'EmptyStatement';
     },
-    ExprStatement: function ExprStatement() {
+    ExprStatement: function() {
         this.type = 'ExprStatement';
     },
-    ExprNoBF: function ExprNoBF() {
+    ExprNoBF: function() {
         this.type = 'ExprNoBF';
     },
-    Expr: function Expr() {
+    Expr: function() {
         this.type = 'Expr';
     },
-    AssignmentExpr: function AssignmentExpr(operator, operand1, operand2) {
+    AssignmentExpr: function(operator, operand1, operand2) {
         this.type = 'AssignmentExpr';
         this.operator = operator;
         this.operand1 = operand1;
         this.operand2 = operand2;
     },
-    AssignmentExprNoBF: function AssignmentExprNoBF() {
+    AssignmentExprNoBF: function() {
         this.type = 'AssignmentExprNoBF';
     },
-    LeftHandSideExprNoBF: function LeftHandSideExprNoBF() {
+    LeftHandSideExprNoBF: function() {
         this.type = 'LeftHandSideExprNoBF';
     },
-    LeftHandSideExpr: function LeftHandSideExpr() {
+    LeftHandSideExpr: function() {
         this.type = 'LeftHandSideExpr';
     },
-    AssignmentOperator: function AssignmentOperator() {
+    AssignmentOperator: function() {
         this.type = 'AssignmentOperator';
     },
-    AddictiveExprNoBF: function AddictiveExprNoBF() {
+    AddictiveExprNoBF: function() {
         this.type = 'AddictiveExprNoBF';
     },
-    AddictiveExpr: function AddictiveExpr(operator, operand1, operand2) {
+    AddictiveExpr: function(operator, operand1, operand2) {
         this.type = 'AddictiveExpr';
         this.operator = operator;
         this.operand1 = operand1;
         this.operand2 = operand2;
     },
-    CallExpr: function CallExpr(fn, args) {
+    CallExpr: function(fn, args) {
         this.type = 'CallExpr';
         this.fn = fn;
         this.args = args;
     },
-    PrimaryExprNoBrace: function PrimaryExprNoBrace() {
+    PrimaryExprNoBrace: function() {
         this.type = 'PrimaryExprNoBrace';
     },
-    Arguments: function Arguments() {
+    Arguments: function() {
         this.type = 'Arguments';
     },
-    ArgumentList: function ArgumentList() {
+    ArgumentList: function() {
         this.type = 'ArgumentList';
     },
-    MultiplicativeExprNoBF: function MultiplicativeExprNoBF() {
+    MultiplicativeExprNoBF: function() {
         this.type = 'MultiplicativeExprNoBF';
     },
-    MultiplicativeExpr: function MultiplicativeExpr(operator, operand1, operand2) {
+    MultiplicativeExpr: function(operator, operand1, operand2) {
         this.type = 'MultiplicativeExpr';
 
         this.operator = operator;
         this.operand1 = operand1;
         this.operand2 = operand2;
     },
-    UnaryExprNoBF: function UnaryExprNoBF() {
+    UnaryExprNoBF: function() {
         this.type = 'UnaryExprNoBF';
     },
-    Num: function Num(value) {
+    Num: function(value) {
         this.type = 'Number';
         this.value = value;
     },
-    String: function String(value) {
+    String: function(value) {
         this.type = 'String';
         this.value = value;
     },
-    Id: function Id(identifier) {
+    Id: function(identifier) {
         this.type = 'Id';
         this.identifier = identifier;
     },
-    Operator: function Operator(op) {
+    Operator: function(op) {
         this.type = 'Operator';
         this.op = op;
     }
 };
 
-exports['default'] = AST;
-module.exports = exports['default'];
+export default AST;

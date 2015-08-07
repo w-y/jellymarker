@@ -1,16 +1,9 @@
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-exports.Compiler = Compiler;
-exports.compile = compile;
-exports.eval = eval;
+import {isFunction} from '../utils';
 
-var _utils = require('../utils');
-
-function Compiler() {}
+export function Compiler() {}
 
 function normalize(input) {
-    if (input && (input[input.length - 1] !== ';' || input[input.lenght - 1] !== '\n')) {
+    if (input && (input[input.length-1] !== ';' || input[input.lenght-1] !== '\n')) {
         return input + ';';
     }
     return input;
@@ -26,75 +19,71 @@ function validate(input) {
 Compiler.prototype = {
     compiler: Compiler,
 
-    compile: function compile(program) {
-        var ret = this.accept(program);
+    compile: function(program) {
+        let ret = this.accept(program);
         return ret;
     },
-    accept: function accept(node) {
-        var ret = this[node.type](node);
+    accept: function(node) {
+        let ret = this[node.type](node);
         return ret;
     },
-    Program: function Program(program) {
-        var statements = program.statements;
-        var ret = [];
+    Program: function(program) {
+        let statements = program.statements;
+        let ret = [];
 
-        for (var i = 0; i < statements.length; i++) {
+        for (let i = 0; i < statements.length; i++) {
             ret.push(this.accept(statements[i]));
         }
         return ret;
     },
-    Statement: function Statement(statement) {
+    Statement: function(statement) {
         return this.accept(statement.content);
     },
-    EmptyStatement: function EmptyStatement(emptyStatement) {
+    EmptyStatement: function(emptyStatement) {
         return null;
     },
-    Operator: function Operator(operator) {
+    Operator: function(operator) {
         return this.operators[operator.op];
     },
-    Variable: function Variable(variable) {
+    Variable: function(variable) {
         return this.variables[variable.identifier];
     },
-    AssignmentExpr: function AssignmentExpr(assignmentExpr) {
+    AssignmentExpr: function(assignmentExpr) {
         var right = this.accept(assignmentExpr.operand2);
         var op = this.accept(assignmentExpr.operator);
 
-        op = op || function (v) {
-            return v;
-        };
+        op = op || ((v) => {return v;});
 
-        var id = assignmentExpr.operand1.identifier;
+        var id =  assignmentExpr.operand1.identifier;
         this.variables[id] = op(right);
 
         return right;
     },
-    AddictiveExpr: function AddictiveExpr(addictiveExpr) {
+    AddictiveExpr: function(addictiveExpr) {
         return this.evalBinExpr(addictiveExpr);
     },
-    MultiplicativeExpr: function MultiplicativeExpr(multiplicativeExpr) {
+    MultiplicativeExpr: function(multiplicativeExpr) {
         return this.evalBinExpr(multiplicativeExpr);
     },
-    Number: function Number(number) {
+    Number: function(number) {
         return +number.value;
     },
-    String: function String(str) {
-        return str.value.substring(1, str.value.length - 1);
+    String: function(str) {
+        return str.value.substring(1, str.value.length-1);
     },
-    Id: function Id(id) {
+    Id: function(id) {
         return this.variables[id.identifier];
     },
-    CallExpr: function CallExpr(callExpr) {
-        var _this = this;
-
+    CallExpr: function(callExpr) {
         var fn = this.accept(callExpr.fn);
         var args = [];
 
         if (callExpr.args && callExpr.args.length > 0) {
-            args = callExpr.args.map(function (arg) {
-                return _this.accept(arg);
+            args = callExpr.args.map( (arg) => {
+                return this.accept(arg);
             });
         }
-        if (fn && (0, _utils.isFunction)(fn)) {
+        if (fn && isFunction(fn)) {
             return fn.apply({
                 operators: this.operators,
                 variables: this.variables
@@ -104,7 +93,7 @@ Compiler.prototype = {
             throw new Error('no such function');
         }
     },
-    evalBinExpr: function evalBinExpr(expr) {
+    evalBinExpr: function(expr) {
         var operator = this.accept(expr.operator);
         var operand1 = this.accept(expr.operand1);
         var operand2 = this.accept(expr.operand2);
@@ -118,12 +107,12 @@ Compiler.prototype = {
     }
 };
 
-function compile(input, options, env) {
+export function compile(input, options, env) {
     if (!validate(input)) {
         return false;
     }
-    var ast = env.parse(normalize(input), options);
-    var compiler = new env.Compiler();
+    let ast = env.parse(normalize(input), options);
+    let compiler = new env.Compiler();
 
     compiler.operators = env.operators;
     compiler.variables = env.variables;
@@ -131,17 +120,17 @@ function compile(input, options, env) {
     return compiler.compile(ast);
 }
 
-function eval(input, options, env) {
+export function eval(input, options, env) {
     if (!validate(input)) {
         return false;
     }
-    var ast = env.parse(normalize(input), options);
-    var compiler = new env.Compiler();
+    let ast = env.parse(normalize(input), options);
+    let compiler = new env.Compiler();
 
     compiler.operators = env.operators;
     compiler.variables = env.variables;
 
-    var ret = compiler.compile(ast);
+    let ret = compiler.compile(ast);
     if (ret && ret.length > 0) {
         return ret[0];
     }

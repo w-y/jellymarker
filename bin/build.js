@@ -10,7 +10,7 @@ var fs = require('fs');
 var browserify = require('browserify');
 var babelify = require("babelify");
 
-fs.readFile(path.resolve(__dirname, '../src/rule.jison'), 'UTF-8', function(err, data) {
+fs.readFile(path.resolve(__dirname, '../src/compiler/rule.jison'), 'UTF-8', function(err, data) {
     console.log('compiling...');
     if (err) {
         throw new Error('failed to read rule.json');
@@ -27,7 +27,7 @@ fs.readFile(path.resolve(__dirname, '../src/rule.jison'), 'UTF-8', function(err,
 
     jsRule = (buffArr.slice(0, buffArr.length - 16)).join('\n'); 
 
-    fs.writeFileSync(path.resolve(__dirname, '../src/rule.js'), jsRule + ';module.exports = parser;');
+    fs.writeFileSync(path.resolve(__dirname, '../src/compiler/rule.js'), jsRule + ';module.exports = parser;');
 
     console.log('compile done');
 
@@ -39,7 +39,7 @@ fs.readFile(path.resolve(__dirname, '../src/rule.jison'), 'UTF-8', function(err,
         .transform(babelify.configure({
             blacklist: ['useStrict']
         }))
-        .require(path.resolve(__dirname, '../lib/jellymarker.js'), {entry: true})
+        .require(path.resolve(__dirname, '../src/jellymarker.js'), {entry: true})
         .bundle()
         .on('error', function (err) { console.log("Error: " + err.message); })
         .on('end', function() { 
@@ -53,5 +53,4 @@ fs.readFile(path.resolve(__dirname, '../src/rule.jison'), 'UTF-8', function(err,
         .on('data', function (chunk) {
             body += chunk;
         });
-        //.pipe(fs.createWriteStream(path.resolve(__dirname, '../dist/jellymarker.js')));
 });
