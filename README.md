@@ -6,7 +6,7 @@ Data and operations are all abstracted and you need to define your own.
 
 A simple demo:
 
-First you defined variable A and B:
+First you define variable A and B:
 
     var Jellymarker  = require('jellymarker');
 
@@ -17,7 +17,7 @@ First you defined variable A and B:
     jellymarker.registerVariables('B', {v:'Bob'})
 
 
-Then you defined operator + * - :
+Then you define operator + * - :
 
     jellymarker.registerOperators('+', function(v1, v2) {
         return {
@@ -74,7 +74,7 @@ It makes no sense:
 
     A + B
 
-But in the system of css styles it could be meaningfule:
+But in the system of css styles it could be meaningful:
 
     height(100) + width(100) + block
 
