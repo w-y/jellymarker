@@ -120,7 +120,7 @@ export function compile(input, options, env) {
     return compiler.compile(ast);
 }
 
-export function eval(input, options, env) {
+export function evaluate(input, options, env) {
     if (!validate(input)) {
         return false;
     }

@@ -2,7 +2,7 @@ import runtime from './jellymarker.runtime';
 
 import AST from './compiler/ast';
 import { parser as Parser, parse } from './compiler/base';
-import { Compiler, compile, eval } from './compiler/compiler';
+import { Compiler, compile, evaluate } from './compiler/compiler';
 import { extend } from './utils';
 
 let _create = runtime.create;
@@ -14,7 +14,7 @@ function create() {
         return compile(input, options, tm);
     };
     tm.eval = function(input, options) {
-        return eval(input, options, tm);
+        return evaluate(input, options, tm);
     };
     tm.AST = AST;
     tm.Compiler = Compiler;

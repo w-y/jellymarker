@@ -1,4 +1,4 @@
-let AST = {
+const AST = {
     Program: function(statements) {
         this.type = 'Program';
         this.statements = statements;
